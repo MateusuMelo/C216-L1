@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class SimpleDB:
     def __init__(self, data_path=None):
         if data_path is None:
@@ -31,9 +32,10 @@ class SimpleDB:
         except Exception as e:
             raise e
 
-    def delete(self, condition):
+    def delete(self, matricula):
         try:
-            self.data = self.data.drop(self.data.query(condition).index).reset_index(drop=True)
+            indices = self.data[self.data['matricula'] == matricula].index
+            self.data = self.data.drop(indices).reset_index(drop=True)
         except Exception as e:
             raise e
 

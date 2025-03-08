@@ -6,27 +6,18 @@ class AlunoService:
     def __init__(self, db: SimpleDB):
         self.db = db
 
-    def cadastra_aluno(self):
-        nome = input('Digite o nome do aluno: ')
-        email = input('Digite o email do aluno: ')
-        curso = input('Digite o curso do aluno: ')
+    def cadastra_aluno(self, nome: str, email: str, curso: str):
         aluno = Aluno(nome, email, curso)
         self.db.insert_one(aluno.get_series())
 
     def lista_alunos(self):
         print('\nAlunos cadastrados:', self.db.read_all())
 
-    def verifica_aluno(self):
-        matricula = input('Digite a matrícula do aluno: ')
+    def verifica_aluno(self, matricula: str):
         aluno = self.db.read_by_mat(matricula)
         print(f'Aluno {aluno}')
 
-    def atualiza_aluno(self):
-        matricula = input('Digite a matrícula do aluno que deseja atualizar: ')
-        novo_nome = input('Novo nome (deixe em branco para manter o atual): ')
-        novo_email = input('Novo email (deixe em branco para manter o atual): ')
-        novo_curso = input('Novo curso (deixe em branco para manter o atual): ')
-
+    def atualiza_aluno(self, matricula: str, novo_nome: str = '', novo_email: str = '', novo_curso: str = ''):
         update_data = {}
         if novo_nome:
             update_data['nome'] = novo_nome
@@ -41,7 +32,6 @@ class AlunoService:
         else:
             print('Nenhuma alteração feita.')
 
-    def remove_aluno(self):
-        matricula = input('Digite a matrícula do aluno que deseja remover: ')
-        self.db.delete(f'matricula == {matricula}')
+    def remove_aluno(self, matricula: str):
+        self.db.delete(matricula)
         print('Aluno removido com sucesso!')
