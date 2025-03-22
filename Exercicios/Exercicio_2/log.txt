@@ -1,0 +1,15 @@
+docker run -it sistema_faculdade
+Alunos cadastrados inicialmente:
+
+Alunos cadastrados:              nome                     email curso matricula
+0      João Silva      joao.silva@email.com   GES      GES1
+1  Maria Oliveira  maria.oliveira@email.com   GET      GET2
+2     Pedro Costa     pedro.costa@email.com   GEB      GEB3
+Aluno atualizado com sucesso!
+Aluno removido com sucesso!
+
+Alunos após remoção:
+
+Alunos cadastrados:              nome                     email curso matricula
+0  Maria Oliveira  maria.oliveira@email.com   GET      GET2
+1     Pedro Costa     pedro.costa@email.com   GEB      GEB3
